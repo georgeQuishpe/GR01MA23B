@@ -1,0 +1,114 @@
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #2a2185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+    --green: #4caf50;
+    --red: #f44336;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: var(--blue);
+}
+
+h1 {
+    text-align: center;
+    font-size: 45px;
+    color: var(--blue);
+}
+
+#formulario {
+    width: 50%;
+    margin-top: 20px;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    font-weight: bolder;
+    margin-bottom: 8px;
+}
+
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 15px 30px; /* Ajusta el padding para hacer los botones más grandes */
+    font-weight: bold;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: var(--green);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+}
+
+button.cancelar {
+    background-color: var(--red);
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    width: 350px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.radio-container label {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 0;
+    font-weight: normal;
+}
+
+.radio-container input {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
