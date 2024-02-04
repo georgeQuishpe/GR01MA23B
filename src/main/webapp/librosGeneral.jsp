@@ -1,4 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="modelos.ClaseEstudiante" %>
+<%@ page import="java.util.List" %>
+<%@ page import="modelos.ClaseLibro" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -10,7 +13,7 @@
     <script src="https://kit.fontawesome.com/cd7314d904.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <title>Mi Biblioteca</title>
+    <title>Mi Biblioteca - Libros</title>
 </head>
 
 <body>
@@ -19,7 +22,7 @@
     <div class="navigation">
         <ul>
             <li>
-                <a href="#">
+                <a href="librosGeneral.jsp">
                         <span class="icon">
                             <i class="fa-solid fa-book-open-reader"></i>
                         </span>
@@ -28,7 +31,7 @@
             </li>
 
             <li>
-                <a href="librosController?action=listaLibros">
+                <a href="#">
                         <span class="icon active">
                             <i class="fa-solid fa-book"></i>
                         </span>
@@ -87,41 +90,41 @@
                     </thead>
 
                     <tbody>
+
+
+                    <%
+                        List<ClaseLibro> listaLibros = (List) request.getSession().getAttribute("listaLibros");
+                        String disponibilidad;
+                        for (ClaseLibro libro : listaLibros) {
+                            disponibilidad = libro.getDisponibilidad() ? "Disponible" : "No Disponible";
+                    %>
                     <tr>
-                        <td>57578</td>
-                        <td>Harry Potter</td>
-                        <td>J.K Rowling</td>
-                        <td>Fantasía</td>
-                        <td><span class="status delivered">Disponible</span></td>
+                        <td><%=libro.getIdLibro()%>
+                        </td>
+                        <td><%=libro.getTitulo()%>
+                        </td>
+                        <td><%=libro.getAutor()%>
+                        </td>
+                        <td><%=libro.getGenero()%>
+                        </td>
+                        <td><span class="status" data-disponibilidad="<%=disponibilidad%>"><%=disponibilidad%></span></td>
                         <td><i class="fa-solid fa-trash icon-table"></i></td>
                     </tr>
 
-                    <tr>
-                        <td>12345</td>
-                        <td>Cien años de soledad</td>
-                        <td>Gabriel García Márquez</td>
-                        <td>Realismo mágico</td>
-                        <td><span class="status return">No disponible</span></td>
-                        <td><i class="fa-solid fa-trash icon-table"></i></td>
-                    </tr>
+                    <script>
+                        var elementosDisponibilidad = document.querySelectorAll('.status');
+                        elementosDisponibilidad.forEach(function (elemento) {
+                            var disponibilidad = elemento.getAttribute('data-disponibilidad');
+                            if (disponibilidad.trim() === "Disponible") {
+                                elemento.classList.add('delivered');
+                            } else if (disponibilidad.trim() === "No Disponible") {
+                                elemento.classList.add('return');
+                            }
+                        });
+                    </script>
 
-                    <tr>
-                        <td>67890</td>
-                        <td>El código Da Vinci</td>
-                        <td>Dan Brown</td>
-                        <td>Suspenso</td>
-                        <td><span class="status return">No disponible</span></td>
-                        <td><i class="fa-solid fa-trash icon-table"></i></td>
-                    </tr>
+                    <%}%>
 
-                    <tr>
-                        <td>13579</td>
-                        <td>El Señor de los Anillos</td>
-                        <td>J.R.R. Tolkien</td>
-                        <td>Fantasía épica</td>
-                        <td><span class="status delivered">Disponible</span></td>
-                        <td><i class="fa-solid fa-trash icon-table"></i></td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
